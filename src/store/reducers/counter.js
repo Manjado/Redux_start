@@ -1,16 +1,15 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actions';
 
 const initialState = {
-    counter: 0,
-}
+    counter: 0
+};
 
-const reducer = (state = initialState,action) => {
+const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.INCREMENT:
-            return {
-                ...state,
-                counter: state.counter + 1
-            }
+            const newState = Object.assign({}, state);
+            newState.counter = state.counter + 1;
+            return newState;
         case actionTypes.DECREMENT:
             return {
                 ...state,
@@ -27,8 +26,7 @@ const reducer = (state = initialState,action) => {
                 counter: state.counter - action.val
             }
     }
-
     return state;
-}
+};
 
 export default reducer;
